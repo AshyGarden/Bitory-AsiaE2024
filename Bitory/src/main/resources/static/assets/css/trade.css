@@ -167,3 +167,33 @@ thead th {
     width: 100%;
 
 }
+
+
+#container-table {
+    display: flex;
+    flex-direction: column;
+    max-height: 625px;
+    overflow-y: auto;
+}
+
+
+/* 스크롤바 스타일을 추가합니다 */
+#container-table {
+    max-height: 625px; /* 스크롤바가 나타나길 원하는 높이 */
+    overflow-y: auto; /* 컨텐츠가 넘칠 때 세로 스크롤바를 표시 */
+}
+
+/* 스크롤바 디자인을 커스텀합니다 */
+#container-table::-webkit-scrollbar {
+  width: 10px; /* 스크롤바의 너비 */
+}
+
+#container-table::-webkit-scrollbar-thumb {
+  height: 10%; /* 스크롤바의 길이 */
+  background: rgb(225, 225, 225); /* 스크롤바의 색상 */
+  border-radius: 10px; /* 스크롤바 모서리의 둥근 정도 */
+}
+
+#container-table::-webkit-scrollbar-track {
+  background: rgba(33, 122, 244, .1); /* 스크롤바 트랙의 배경 색상 */
+}

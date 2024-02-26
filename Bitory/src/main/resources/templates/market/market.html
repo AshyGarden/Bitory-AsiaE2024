@@ -9,14 +9,15 @@
     <div class="main-banner">
         <div id="main" class="container">
             <!-- =========================   실시간 가상화폐 주가 테이블  ==============================-->
-            <div class="container" id="marketTable">
-                <div class="container-table m-5 p-5">
+            <div class="container" id="marketTable" style="margin-top:-2%">
+                <div class="container-table p-3">
                     <div id="app">
                         <br><br>
-                        <button type="button" class="btn btn-danger" style="width:20%; position: absolute; right: 10%;" onclick="window.location.href='/market/trade';">
-                            <h1  style="color:white;">Trade</h1>
-                        </button>
-                        <h6 class="marketTableName" style="color: white;">실시간 메이저 가상화폐 시세</h6>
+                        <!-- trade 버튼을 컨테이너 안에 넣고 위치 조정 -->
+<!--                        <button type="button" class="btn btn-danger" style="width:20%; position: relative;" onclick="window.location.href='/market/trade';">-->
+<!--                            <h1  style="color:white;">Trade</h1>-->
+<!--                        </button>-->
+                        <h6 class="marketTableName" style="color: white; margin-top:-2%;">실시간 메이저 가상화폐 시세</h6>
                         <h1 class="marketTableName">
                             Major Cryptocurrency
                         </h1>
@@ -43,7 +44,5 @@
         </div>
     </div>
 </th:block>
-
-
 </body>
 </html>

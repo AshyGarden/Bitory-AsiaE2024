@@ -153,7 +153,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
        // 주문 가능 금액 input 태그에 현재가 설정
        document.getElementById('orderPrice').value = data.trade_price;
+       // 매도 주문가격 input 태그에 현재가를 설정합니다.
+       document.getElementById('sellOrderPrice').value = data.trade_price;
        document.querySelector('input[type="number"][value="[[${coinData.currentPrice}]]"]').value = data.trade_price;
+
    }
 
     // 상세 테이블 업데이트 함수
@@ -240,4 +243,60 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 초기 상태 설정
     toggleSellOrderContent();
+});
+
+
+function calculateTotalBuyCost() {
+    // 사용자가 입력한 주문 금액과 거래량을 가져옵니다.
+    var buyAmount = parseFloat(document.getElementById('buyAmount').value.replace(/,/g, ''));
+    var buyVolume = parseFloat(document.getElementById('buyVolume').value.replace(/,/g, ''));
+
+    // 전체 매수 금액을 계산합니다.
+    var totalCost = buyAmount * buyVolume;
+
+    // 결과를 표시합니다. 소수점 두 자리까지 표시하고, 천 단위로 쉼표를 넣습니다.
+    document.getElementById('totalBuyCost').textContent = totalCost.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+// 이벤트 리스너를 주문 금액과 거래량 입력란에 추가하여, 사용자가 입력할 때마다 전체 금액을 자동으로 계산하게 합니다.
+document.getElementById('buyAmount').addEventListener('input', calculateTotalBuyCost);
+document.getElementById('buyVolume').addEventListener('input', calculateTotalBuyCost);
+
+// 페이지 로딩 시, 첫 번째 실시간 데이터의 현재가를 매수/매도 주문가격에 설정합니다.
+document.addEventListener('DOMContentLoaded', function() {
+    // 첫 번째 실시간 데이터가 로드되면 해당 현재가를 매수/매도 주문가격에 설정합니다.
+    ws.onmessage = function(event) {
+        // ... 기존 onmessage 핸들러 코드 ...
+
+        // 첫 번째 실시간 데이터의 현재가를 매수/매도 주문가격에 설정합니다.
+        if (!selectedCoinCode) {
+            selectedCoinCode = data.code;
+            document.getElementById('buyOrderPrice').value = data.trade_price.toLocaleString();
+            document.getElementById('sellOrderPrice').value = data.trade_price.toLocaleString();
+        }
+    };
+});
+
+
+
+// <==================== 예상금액  =======================================================>
+document.addEventListener('DOMContentLoaded', function() {
+    // Function to calculate and update the estimated amount
+    function updateEstimatedAmount() {
+        // Assuming orderPrice is filled with the current price of the cryptocurrency
+        var orderPrice = parseFloat(document.getElementById('orderPrice').value);
+        var orderQuantity = parseFloat(document.getElementById('orderQuantity').value);
+
+        // Calculate the estimated amount
+        var estimatedAmount = orderPrice * orderQuantity;
+
+        // Update the displayed estimated amount
+        document.getElementById('estimatedAmountDisplay').textContent = estimatedAmount.toFixed(2);
+    }
+
+    // Event listener for changes in the order quantity input
+    document.getElementById('orderQuantity').addEventListener('input', updateEstimatedAmount);
+
+    // Call the function on page load to ensure the estimated amount is set initially
+    updateEstimatedAmount();
 });

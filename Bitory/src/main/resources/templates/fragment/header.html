@@ -22,14 +22,41 @@
                         <!-- ***** Serach Start ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="/market">Market</a></li>
-                            <li class="scroll-to-section"><a href="/market/trade">Trade</a></li>
-                            <li class="scroll-to-section"><a href="/history">History</a></li>
-                            <li class="scroll-to-section"><a href="/predict">Predict</a></li>
-                            <li class="scroll-to-section"><a href="/virtualInvest">Investment</a></li>
-                            <li class="scroll-to-section"><a href="/member/myPage">My Page</a></li>
-                            <li class="scroll-to-section"><a href="/member/login">Login</a></li>
+                            <li class="scroll-to-section"><a href="/index" id="navHome">Home</a></li>
+                            <li class="scroll-to-section"><a href="/market" id="navMarket">Market</a></li>
+                            <li class="scroll-to-section"><a href="/market/trade" id="navTrade">Trade</a></li>
+                            <li class="scroll-to-section"><a href="/history" id="navHistory">History</a></li>
+                            <li class="scroll-to-section"><a href="/predict" id="navPredict">Predict</a></li>
+                            <li class="scroll-to-section"><a href="/member/myPage" id="navMyPage">My Page</a></li>
+                            <li class="scroll-to-section"><a href="/virtualInvest" id="navInvest">Investment</a></li>
+                            <li class="scroll-to-section"><a href="/member/login" id="navLogin">Login</a></li>
                         </ul>
+                        <script>
+                            // 페이지 로드 시 현재 URL과 일치하는 메뉴 항목을 활성화합니다.
+                            document.addEventListener('DOMContentLoaded', function() {
+                                var navItems = document.querySelectorAll('.nav li a');
+                                var currentPath = window.location.pathname;
+
+                                navItems.forEach(function(item) {
+                                    if (item.getAttribute('href') === currentPath) {
+                                        item.classList.add('active');
+                                    } else {
+                                        item.classList.remove('active');
+                                    }
+                                });
+                            });
+
+                            // 클릭 이벤트 리스너를 모든 네비게이션 항목에 추가합니다.
+                            document.querySelectorAll('.nav li a').forEach(function(item) {
+                                item.addEventListener('click', function() {
+                                    // 'active' 클래스를 현재 클릭된 항목에 추가하고 다른 모든 항목에서 제거합니다.
+                                    document.querySelectorAll('.nav li a').forEach(function(navItem) {
+                                        navItem.classList.remove('active');
+                                    });
+                                    item.classList.add('active');
+                                });
+                            });
+                        </script>
                         <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>
@@ -39,6 +66,19 @@
             </div>
         </div>
     </header>
+    <script>
+        function handleSearch(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                var searchText = document.getElementById('searchText').value;
+                var searchForm = document.getElementById('searchForm');
+                searchForm.action = "/search?q=" + encodeURIComponent(searchText);
+                searchForm.submit();
+            }
+        }
+
+        document.getElementById('searchText').addEventListener('keypress', handleSearch);
+    </script>
     <!-- ***** Header Area End ***** -->
 </th:block>
 </html>
