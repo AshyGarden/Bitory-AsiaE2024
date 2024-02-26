@@ -9,7 +9,10 @@ public interface UserRepository extends JpaRepository<User, String> {
 
     /* 24.02.01
      * Author: CYJ
-     * function: findByEmail(이메일로 회원정보 조회기능)
+     * function: findByMbrId(id로 회원정보 조회기능)
      * */
-    Optional<User> findByEmail(String email); //Query Method
+    Optional<User> findByMbrId(String mbrId); //Query Method
+
+    // function: existsByMbrId(id 중복 조회기능)
+//    boolean existsByMbrId(String mbrId);
 }
