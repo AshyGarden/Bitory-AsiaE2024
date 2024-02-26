@@ -3,43 +3,52 @@ package com.example.bitory.user.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.validator.constraints.UniqueElements;
 
 import java.time.LocalDateTime;
 
-@Builder
-@Getter
-@Entity
+@Getter @ToString
 @NoArgsConstructor @AllArgsConstructor
+@Builder @Entity
+@Table(name = "MBRINFM")
 public class User {
 
+    /*
+     * Author : 최용준
+     * Date : 2024/02/20
+     * Function : User
+     * */
+
     @Id
-    @Column(name = "user_id")
-    @GeneratedValue(generator = "system-uuid")
-    @GenericGenerator(name = "system-uuid", strategy = "uuid")
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //auto Increment
+    @Column(name = "MBR_NUMBER_PK", length = 100)
+//    @GeneratedValue(generator = "system-uuid")
+//    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    private int mbrNumberPk; //회원번호PK
 
-    @Column(unique = true, nullable = false)
-    private String email;
+    @Column(name = "MBR_ID", unique = true, nullable = false, length = 30)
+    private String mbrId; //ID
 
-    @Column(nullable = false)
-    private String password;
+    @Column(name = "MBR_PW",nullable = false, length = 40)
+    private String mbrPw; //PW
 
-    private String userName;
+    @Column(name = "MBR_NAME_KR", nullable = false, length = 30)
+    private String mbrNameKr; //이름-한글
+
+    @Column(name = "MBR_NAME_EN", nullable = false, length = 30)
+    private String mbrNameEn; //이름-영문
+
+    @Column(name = "MBR_ADDR1", nullable = false, length = 200)
+    private String mbrAddr1; //주소1
+
+    @Column(name = "MBR_ADDR2",nullable = false, length = 200)
+    private String mbrAddr2; //주소2
+
+    @Column(name = "MBR_KRW", nullable = false)
+    private float mbrKrw; //회원의 원화자산
 
     @CreationTimestamp
-    private LocalDateTime joinDate;
-
-    @Enumerated(EnumType.STRING)
-    @Builder.Default
-    private Role role = Role.Common;
-
-    private String profileImg;
-
-
-    /* 유저 권한 수정 */
-    public void changeRole(Role role) {
-        this.role = role;
-    }
+    @Column(name = "MBR_JOINDATE")
+    private LocalDateTime mbrJoinDate; //가입일자
 
 }

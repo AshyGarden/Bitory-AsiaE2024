@@ -10,14 +10,13 @@ import lombok.*;
 public class LoginRequestDTO {
     /* 24.02.01
      * Author: CYJ
-     * class: LoginRequestDTO
+     * class: LoginRequestDTO // 로그인에 필요한 정보를 전달해주는 DTO
      * */
 
-    @Email
     @NotBlank
-    private String email;
+    private String id;
 
     @NotBlank
-    private String password;
+    private String pw;
 
 }
