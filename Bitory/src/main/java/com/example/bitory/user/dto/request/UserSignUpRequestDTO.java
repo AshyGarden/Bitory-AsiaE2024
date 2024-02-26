@@ -4,27 +4,43 @@ import com.example.bitory.user.entity.User;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
+import org.springframework.data.annotation.Id;
 
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
-@EqualsAndHashCode(of = "email")
 @ToString @Builder
 public class UserSignUpRequestDTO {
 
     @NotBlank
-    @Email
-    private String email;
+    private String id;
 
     @NotBlank
     private String password;
 
-    private String userName;
+    @NotBlank
+    private String nameKr;
+
+    @NotBlank
+    private String nameEn;
+
+    @NotBlank
+    private  String addr1;
+
+    @NotBlank
+    private  String addr2;
+
+    @NotBlank
+    private float krw;
 
     public User toEntity() {
         return User.builder()
-                .email(this.email)
-                .password(this.password)
-                .userName(this.userName)
+                .mbrId(this.id)
+                .mbrPw(this.password)
+                .mbrNameKr(this.nameKr)
+                .mbrNameEn(this.nameEn)
+                .mbrAddr1(this.addr1)
+                .mbrAddr2(this.addr2)
+                .mbrKrw(this.krw)
                 .build();
     }
 

@@ -1,7 +1,7 @@
 //package com.example.bitory.filter;
 //
 //
-//import com.example.bitory.auth.TokenProvider;
+////import com.example.bitory.auth.TokenProvider;
 //import com.example.bitory.auth.TokenUserInfo;
 //import jakarta.servlet.FilterChain;
 //import jakarta.servlet.ServletException;
@@ -27,7 +27,7 @@
 //@RequiredArgsConstructor
 //public class JwtAuthFilter {
 //
-//    private final TokenProvider tokenProvider;
+////    private final TokenProvider tokenProvider;
 //
 //    // 필터가 해야할 작업을 기술
 ////    @Override
@@ -44,27 +44,27 @@
 //            if(token != null) {
 //
 //                // 토큰 서명 위조 검사 후 토큰을 파싱해서 클레임을 얻어내는 작업
-//                TokenUserInfo userInfo = tokenProvider.validateAndGetTokenUserInfo(token);
+////                TokenUserInfo userInfo = tokenProvider.validateAndGetTokenUserInfo(token);
 //
-//                // 인가 정보 리스트
-//                List<SimpleGrantedAuthority> authorityList = new ArrayList<>();
-//                authorityList.add(new SimpleGrantedAuthority("ROLE_" + userInfo.getRole().toString()));
+////                // 인가 정보 리스트
+////                List<SimpleGrantedAuthority> authorityList = new ArrayList<>();
+////                authorityList.add(new SimpleGrantedAuthority("ROLE_" + userInfo.getRole().toString()));
 //
 //                // 인증 완료 처리
 //                // - 스프링 시큐리티에게 인증정보를 전달해서
 //                // 전역적으로 앱에서 인증정보를 활용할 수 있게 설정
-//                AbstractAuthenticationToken auth
-//                        = new UsernamePasswordAuthenticationToken(
-//                        userInfo, // 컨트롤러에서 활용할 유저 정보 (필수)
-//                        null, // 인증된 사용자의 비밀번호 - 보통 널값 (필수)
-//                        authorityList // 인가 정보 (권한 정보) (선택)
-//                );
+////                AbstractAuthenticationToken auth
+////                        = new UsernamePasswordAuthenticationToken(
+////                        userInfo, // 컨트롤러에서 활용할 유저 정보 (필수)
+////                        null, // 인증된 사용자의 비밀번호 - 보통 널값 (필수)
+////                        authorityList // 인가 정보 (권한 정보) (선택)
+////                );
 //
-//                //인증 완료 처리시 클라이언트의 요청 정보 세팅
-//                auth.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-//
-//                // 스프링 시큐리티 컨테이너에 인증 정보 객체 등록
-//                SecurityContextHolder.getContext().setAuthentication(auth);
+////                //인증 완료 처리시 클라이언트의 요청 정보 세팅
+////                auth.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+////
+////                // 스프링 시큐리티 컨테이너에 인증 정보 객체 등록
+////                SecurityContextHolder.getContext().setAuthentication(auth);
 //
 //            }
 //        } catch (Exception e) {

@@ -16,22 +16,20 @@ public class LoginResponseDTO {
      * class: LoginResponseDTO
      * */
 
-    private String email;
-    private String userName;
+    private String id;
+    private String nameKr;
+    private String nameEn;
 
     @JsonFormat(pattern = "yyyy년 MM월 dd일")
     private LocalDate joinDate;
-    private String token; // 인증 토큰
-    private String role;  // 권한
+//    private String token; // 인증 토큰
+//    private String role;  // 권한
 
-    //User 정보와 Token을 이용하여 dto를 이용하는 생성자
+    //User 정보를 이용하여 dto를 이용하는 생성자
     public LoginResponseDTO(User user) {
-        this.email =  user.getEmail();
-        this.userName = user.getUserName();
-        this.joinDate = LocalDate.from(user.getJoinDate());
-//        this.token = token;
-        this.role = String.valueOf(user.getRole());
+        this.id =  user.getMbrId();
+        this.nameKr = user.getMbrNameKr();
+        this.nameEn = user.getMbrNameEn();
+        this.joinDate = LocalDate.from(user.getMbrJoinDate());
     }
-
-    //else
 }
