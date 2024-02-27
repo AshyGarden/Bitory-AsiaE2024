@@ -87,7 +87,7 @@
                                         </tr>
                                     </table>
                                     <!-- 매수 지정가 버튼 -->
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#OrderModal" style="width:100%;">
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#OrderModal" style="width:100%;" id="OrderModalFirstButton">
                                         매수
                                     </button>
 
@@ -104,24 +104,15 @@
 
                                                 <!-- Modal body -->
                                                 <div class="modal-body">
-                                                    <table style="color:dark;">
-                                                        <tr>
-                                                            <td>비트코인(KRW-BTC)</td>
-                                                            <td>0.0001BTC</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>71,135 KRW</td>
-                                                            <td>2024.02.25. 23:25</td>
-                                                        </tr>
-
-                                                    </table>
+                                                    <!-- 매수 버튼 클릭 시 동적으로 추가될 내용 -->
                                                 </div>
 
                                                 <!-- Modal footer -->
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="OrderModalButton">매수</button>
+                                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="OrderModalButton" onclick="updateOrderModal()">매수</button>
                                                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>
                                                 </div>
+
 
                                             </div>
                                         </div>
@@ -149,7 +140,7 @@
                                         </tr>
                                     </table>
                                     <!-- 매수 지정가 버튼 -->
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#OrderModal2" style="width:100%;">
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#OrderModal2" style="width:100%;" id="OrderModalFirstButton2">
                                         매수
                                     </button>
 
@@ -239,7 +230,7 @@
                                         </tr>
                                     </table>
                                     <!-- 지정가 매도 버튼 -->
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#SellModal" style="width:100%;">
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#SellModal" style="width:100%;" id="SellModalFirstButton">
                                         매도
                                     </button>
 
@@ -256,22 +247,12 @@
 
                                                 <!-- Modal body -->
                                                 <div class="modal-body">
-                                                    <table style="color:dark;">
-                                                        <tr>
-                                                            <td>비트코인(KRW-BTC)</td>
-                                                            <td>0.0001BTC</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>71,135 KRW</td>
-                                                            <td>2024.02.25. 23:25</td>
-                                                        </tr>
-
-                                                    </table>
+                                                    <!-- 매도 버튼 클릭 시 동적으로 추가될 내용 -->
                                                 </div>
 
                                                 <!-- Modal footer -->
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="sellModalButton">매도</button>
+                                                    <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" id="sellModalButton">매도</button>
                                                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>
                                                 </div>
 
@@ -303,7 +284,7 @@
                                         </tr>
                                     </table>
                                     <!-- 지정가 매도 버튼 -->
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#SellModal2" style="width:100%;">
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#SellModal2" style="width:100%;"  id="SellModalFirstButton2">
                                         매도
                                     </button>
 
